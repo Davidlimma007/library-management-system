@@ -1,22 +1,21 @@
 package com.davidlima.library.domain.entity;
 
-import com.davidlima.library.domain.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Table(name = "employees")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User {
+public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,18 +24,15 @@ public class User {
     @Column(nullable = false)
     private String name;
 
+    //Identifica funcionário internamente
+    @Column(nullable = false, unique = true)
+    private String registrationCode;
+
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false)
-    private String password;
-
-    @Enumerated(EnumType.STRING) // Evita bugs, Mudança de ordem do Enum, Dado quebrado no banco de dados
-    @Column(nullable = false)
-    private Role role;
-
     // ================= RELATIONSHIPS =================
 
-    @OneToMany(mappedBy = "user") //Dono da relação será Loan, evita tabela intermediária desnecessária
+    @OneToMany(mappedBy = "employee")
     private List<Loan> loans = new ArrayList<>();
 }

@@ -3,6 +3,9 @@ package com.davidlima.library.domain.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "books")
 @Data
@@ -26,4 +29,12 @@ public class Book {
 
     @Column(nullable = false)
     private Boolean available = true;
+
+    //book é o dono da relação
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
+
+    @OneToMany(mappedBy = "book")
+    private List<Loan> loans = new ArrayList<>();
 }
