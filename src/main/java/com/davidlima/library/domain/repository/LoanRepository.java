@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface LoanRepository extends JpaRepository<Loan, Long> {
@@ -16,4 +17,6 @@ public interface LoanRepository extends JpaRepository<Loan, Long> {
     boolean existsByBookAndActiveTrue(Book book); //verifica se o livro já está emprestado
 
     List<Loan> findByUserAndActiveTrue(User user); //lista empréstimos ativos do usuário
+
+    Optional<Loan> findByBookAndActiveTrue(Book book);
 }
