@@ -1,5 +1,6 @@
-package com.davidlima.library.domain.entity;
+package com.davidlima.library.domain.entity.pessoa;
 
+import com.davidlima.library.domain.entity.funcao.Emprestimo;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,29 +11,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "employees")
+@Table(name = "funcionarios")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Employee {
+public class Funcionario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private String nome;
 
     //Identifica funcionário internamente
     @Column(nullable = false, unique = true)
-    private String registrationCode;
+    private String codigoRegistro;
 
     @Column(nullable = false, unique = true)
     private String email;
 
     // ================= RELATIONSHIPS =================
 
-    @OneToMany(mappedBy = "employee")
-    private List<Loan> loans = new ArrayList<>();
+    @OneToMany(mappedBy = "funcionario")
+    private List<Emprestimo> emprestimos = new ArrayList<>();
 }

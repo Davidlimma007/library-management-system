@@ -2,7 +2,7 @@
 
 A RESTful API for managing a library system, built with **Java** and **Spring Boot**, focusing on real-world business rules, security, and clean architecture.
 
-This project is designed for **learning purposes and professional portfolio**, simulating a real library environment with users, employees, book loans, fines, and access control.
+This project is designed for **learning purposes and professional portfolio**, simulating a real library environment with users, employees, livro loans, fines, and access control.
 
 ---
 
@@ -18,16 +18,16 @@ This project is designed for **learning purposes and professional portfolio**, s
 
 ## 🧠 Business Rules
 
-- A user can borrow **up to 2 books**
+- A usuario can borrow **up to 2 books**
 - Loan period is **15 days**
-- A loan can be **renewed only once** for another 15 days
+- A emprestimo can be **renewed only once** for another 15 days
 - Users with **late returns are blacklisted**
 - Blacklisted users **cannot borrow books**
-- A new loan is allowed only if at least one book has been returned
+- A new emprestimo is allowed only if at least one livro has been returned
 - Late returns generate a fine:
   - Base fine: **R$ 20.00**
   - Daily interest: **R$ 2.00 per late day**
-- Every loan is handled by an **employee**
+- Every emprestimo is handled by an **funcionario**
 - All loans and returns are stored for history tracking
 
 ---
@@ -36,7 +36,7 @@ This project is designed for **learning purposes and professional portfolio**, s
 
 Main entities:
 
-- User (library user or employee)
+- User (library usuario or funcionario)
 - Book
 - Category
 - Loan
