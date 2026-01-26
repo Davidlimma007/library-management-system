@@ -36,8 +36,11 @@ public class Multa {
     @Builder.Default
     private Boolean paga = false;
 
-    @Builder.Default
+    @Column(nullable = false)
     private LocalDate criadoEm = LocalDate.now();
+
+    @Column(nullable = false)
+    private LocalDate pagaEm;
 
 }
 

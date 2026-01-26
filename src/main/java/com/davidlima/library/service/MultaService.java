@@ -1,11 +1,13 @@
 package com.davidlima.library.service;
 
 import com.davidlima.library.domain.entity.funcao.Multa;
+import com.davidlima.library.domain.entity.pessoa.Usuario;
 import com.davidlima.library.repository.funcao.MultaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -23,8 +25,12 @@ public class MultaService {
         }
 
         multa.setPaga(true);
-        multa.setCriadoEm(LocalDate.now());
+        multa.setPagaEm(LocalDate.now());
 
         return multaRepository.save(multa);
+    }
+
+    public List<Multa> listarMultasPendentes (Usuario usuario){
+        return multaRepository.findByUsuarioAndPagaFalse(usuario);
     }
 }
